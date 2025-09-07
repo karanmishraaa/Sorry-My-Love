@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Parisienne&display=swap');
+:root{--bg:#0b0710;--card:#0f0c14;--muted:#d9c9d9;--accent:#ff2d55;--heart:#ff4567}
+[data-theme="light"]{--bg:#fff;--card:#fff;--muted:#444;--accent:#e11d48}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:'Dancing Script', 'Great Vibes', serif;background:var(--bg);color:var(--muted)}
+.container{max-width:920px;margin:24px auto;padding:18px}
+.header{display:flex;justify-content:space-between;align-items:center}
+.brand{font-family:'Great Vibes', cursive;font-size:36px;color:var(--accent)}
+nav a{color:var(--muted);margin-left:12px;text-decoration:none}
+
+/* Romantic animated background slider */
+.background-slider{position:fixed;inset:0;z-index:-2;overflow:hidden}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;animation:fade 36s infinite}
+.slide:nth-child(1){background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('assets/rom1.jpg');animation-delay:0s}
+.slide:nth-child(2){background-image:linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),url('assets/rom2.jpg');animation-delay:12s}
+.slide:nth-child(3){background-image:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url('assets/rom3.jpg');animation-delay:24s}
+@keyframes fade{0%{opacity:0}8%{opacity:1}33%{opacity:1}41%{opacity:0}100%{opacity:0}}
+
+/* chibby boy bubble */
+.chibby{position:relative;display:flex;gap:14px;align-items:center}
+.chibby img{width:140px;height:160px;object-fit:contain;filter:drop-shadow(0 6px 12px rgba(0,0,0,0.6))}
+.bubble{background:rgba(255,255,255,0.06);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);max-width:520px}
+.bubble h2{margin:0;font-family:'Parisienne', cursive;color:var(--muted)}
+.bubble .typing{font-size:18px;color:var(--muted);min-height:44px}
+
+/* gallery */
+.gallery{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.gallery img{width:calc(33% - 8px);border-radius:10px;cursor:pointer}
+
+/* gift block */
+.gift-block{background:var(--heart);color:white;padding:16px;border-radius:12px;text-align:center;cursor:pointer;margin-top:14px}
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:white;text-decoration:none}
+
+
+/* sorry block */
+.sorry-block{background:var(--heart);color:white;padding:16px;border-radius:12px;text-align:center;cursor:pointer;margin-top:14px}
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:white;text-decoration:none}
+
+
+/* photo block */
+.photo-block{background:var(--heart);color:white;padding:16px;border-radius:12px;text-align:center;cursor:pointer;margin-top:14px}
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:white;text-decoration:none}
+
+
+/* questions block */
+.questions-block{background:var(--heart);color:white;padding:16px;border-radius:12px;text-align:center;cursor:pointer;margin-top:14px}
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:white;text-decoration:none}
+
+
+/* small screens */
+
+@media(max-width:720px){.gallery img{width:48%}}
+
+/* romantic touches: heart-dots for i and j — apply via <span class="heart-dot">i</span> */
+.heart-dot{position:relative}
+.heart-dot::after{content:'❤';position:absolute;right:-9px;top:-10px;font-size:12px;color:var(--heart)}
+
+/* questions page */
+.question{background:rgba(0,0,0,0.35);padding:16px;border-radius:10px;margin-top:12px}
+.locked{opacity:0.45}
+
+footer{margin-top:28px;color:var(--muted);text-align:center}
+
+/* Romantic animated gradient background */
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(270deg, #ff758c, #ff7eb3, #ff6a88, #ff99ac);
+  background-size: 800% 800%;
+  animation: gradientBG 15s ease infinite;
+  font-family: 'Dancing Script', cursive;
+  color: white;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating romantic hearts */
+.hearts {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+.heart {
+  position: absolute;
+  bottom: -50px;
+  font-size: 20px;
+  color: red;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.5);
+    opacity: 0;
+  }
+}
+/* Romantic animated gradient background */
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(270deg, #0b0710, #2a1f3d, #ff4d6d, #2a1f3d, #0b0710);
+  background-size: 600% 600%;
+  animation: gradientBG 18s ease infinite;
+  font-family: 'Dancing Script', cursive;
+  color: white;
+  overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating romantic hearts */
+.hearts {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0; /* hearts above background, but behind content */
+}
+.heart {
+  position: absolute;
+  bottom: -50px;
+  font-size: 20px;
+  color: red;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Interactive Section - Mobile Optimized */
+.interactive-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 90%;
+  max-width: 360px; /* fits smaller phones */
+  margin: 0 auto 20px;
+  padding: 10px;
+}
+
+.interactive-section a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 12px 0;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #163a4a;
+  background: linear-gradient(135deg, #ff9fb2, #ffd6a5);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.interactive-section a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+.interactive-section .open-me h1 {
+  font-size: 1.4rem;
+  color: #ff4d94;
+  margin-top: 8px;
+}
+
+/* Responsive tweaks for very small screens */
+@media (max-width: 350px) {
+  .interactive-section a {
+    font-size: 0.9rem;
+    padding: 10px 0;
+  }
+  .interactive-section .open-me h1 {
+    font-size: 1.2rem;
+  }
+}
