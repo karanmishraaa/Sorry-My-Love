@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Choose Your Gift</title>
+  <style>
+    :root {
+      --heart: #ff4d6d;
+      --accent: #ff9fb2;
+      --muted: #555;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #fff0f5;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Opening heart emoji */
+    .open-heart {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 80px;
+      opacity: 0;
+      animation: showHeart 2s ease forwards;
+      z-index: 9999;
+    }
+
+    @keyframes showHeart {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+      40% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
+      70% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    }
+
+    /* Background slider */
+    .background-slider {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .background-slider .slide {
+      position: absolute;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      animation: slideBg 15s infinite;
+    }
+
+    @keyframes slideBg {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .header .brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    main h2 {
+      margin: 10px 0;
+      color: #444;
+    }
+
+    /* Gift Form */
+    .question.card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      display: inline-block;
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .question.card label {
+      display: block;
+      margin: 8px 0;
+      font-weight: 500;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: var(--heart);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    /* Interactive Section (Gift, Sorry, Memories, Questions) */
+    section {
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    section a {
+      display: block;
+      width: 90%;
+      max-width: 300px;
+      margin: 10px auto;
+      padding: 12px 0;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      color: #163a4a;
+      background: linear-gradient(135deg, #ff9fb2, #ffd6a5);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    section a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    }
+
+    section h1 {
+      margin-top: 15px;
+      font-size: 1.3rem;
+      color: var(--heart);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 480px) {
+      .question.card {
+        width: 90%;
+        font-size: 0.9rem;
+      }
+
+      section a {
+        font-size: 0.9rem;
+        padding: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="open-heart">❤️</div>
+
+  <div class="background-slider">
+    <div class="slide"></div>
+  </div>
+
+  <div class="container">
+    <header class="header">
+      <div class="brand">Only For Youu <span style="color:var(--heart)">Sweetheart</span></div>
+    </header>
+
+    <main>
+      <h2>Wrapped with love , tied with care , just for youu.</h2>
+      <h2>"This gift isn't as precious as youu, but it's from the heart." ❤️</h2>
+      
+      <div class="question card">
+        <form id="giftForm">
+          <label><input type="radio" name="gift" value="watch"/> 1) Watch</label>
+          <label><input type="radio" name="gift" value="dress"/> 2) A pretty dress</label>
+          <label><input type="radio" name="gift" value="chudi"/> 3) Set of chudi/jhumke/payal</label>
+          <label><input type="radio" name="gift" value="teddy"/> 4) Teddy bear</label>
+          <div style="margin-top:12px">
+            <button class="btn" type="submit">Choose which you want cutie ❤️</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="giftMsg" style="margin-top:12px;color:var(--muted)"></div>
+    </main>
+  </div>
+
+  <section>
+    <a class="gift-block" href="gift.html">Gift box</a>
+    <a class="sorry-block" href="sorry.html">Sorry Card</a>
+    <a class="photo-block" href="memories.html">Memories</a>
+    <a class="questions-block" href="questions.html">Questions</a>
+  
+  </section>
+
+  <script> 
+    // Gift form
+    const giftForm = document.getElementById('giftForm');
+    if(giftForm){
+      giftForm.onsubmit = async (e)=>{
+        e.preventDefault();
+        const fd = new FormData(giftForm);
+        const gift = fd.get('gift');
+        if(!gift) return alert('Choose one');
+        alert('Gift chosen: ' + gift);
+        location.href = 'questions.html';
+      }
+    }
+
+    // Remove heart after animation
+    window.addEventListener("load", () => {
+      const heart = document.querySelector(".open-heart");
+      if (heart) {
+        setTimeout(() => heart.remove(), 2500);
+      }
+    });
+  </script>
+</body>
+</html>
+
