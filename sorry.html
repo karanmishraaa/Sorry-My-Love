@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I’m Sorry, Suhani 💛</title>
+</head>
+<style>
+:root {
+  --blue1:#b3e5fc;
+  --blue2:#e1f5fe;
+  --sun:#ffd54f;
+  --green1:#8bd3a3;
+  --green2:#5dbb84;
+  --green3:#3aa76d;
+  --text:#163a4a;
+  --heart:#ff6b8a;
+  --petal1:#ffadad; --petal2:#ffd6a5; --petal3:#caffbf; --petal4:#9bf6ff; --petal5:#bdb2ff;
+}
+
+body {
+  margin:0;
+  height:100vh;
+  background:linear-gradient(to bottom,var(--blue1),var(--blue2));
+  font-family:"Poppins",sans-serif;
+  color:var(--text);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+/* --- Sky & Sun --- */
+.sunshine {
+  position:absolute;
+  top:3vmin; right:6vmin;
+  width:14vmin; height:14vmin;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, #fff9c4 30%, var(--sun) 90%);
+  filter:drop-shadow(0 0 20px #fff59d);
+  animation:glow 5s ease-in-out infinite alternate;
+}
+@keyframes glow { from{transform:translateY(0)} to{transform:translateY(1vmin)} }
+
+.cloud {
+  position:absolute;
+  background:#fff;
+  border-radius:50px;
+}
+.cloud.tiny { width:18vmin; height:8vmin; }
+.cloud.big { width:28vmin; height:12vmin; }
+.float { animation: drift linear infinite; }
+@keyframes drift { from{transform:translateX(-20vw)} to{transform:translateX(120vw)} }
+
+/* --- Scene --- */
+.scene {
+  flex:1;
+  display:grid;
+  place-items:center;
+  padding:6vmin;
+}
+.message-card {
+  background:#fff8;
+  padding:4vmin 6vmin;
+  border-radius:24px;
+  text-align:center;
+  box-shadow:0 12px 40px rgba(0,0,0,.15);
+  backdrop-filter:blur(5px);
+  max-width:90%;
+}
+.tag {
+  position:absolute;
+  transform:translateY(-2.5rem);
+  background:linear-gradient(90deg,#ffb3c1,#ffd6a5);
+  padding:4px 14px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+}
+.character { width:min(300px,50vmin); animation:float 4s ease-in-out infinite; display:block; margin:0 auto; }
+@keyframes float { 0%{transform:translateY(0)} 50%{transform:translateY(-6px)} 100%{transform:translateY(0)} }
+.elephant { display:block; margin:20px auto; width:200px; }
+
+/* --- Ground & Flowers --- */
+.ground { position:relative; width:100%; height:40vh; }
+.ground .layer path { fill:var(--green1); }
+.ground .layer.mid path { fill:var(--green2); }
+.ground .layer.front path { fill:var(--green3); }
+.garden { position:absolute; bottom:2vh; width:100%; display:flex; justify-content:center; flex-wrap:wrap; gap:1.2vmin; }
+
+.flower { width:1.2vmin; position:relative; }
+.flower .stem { background:#2f8f4e; width:0.2vmin; margin:0 auto; border-radius:1vmin; }
+.flower .petal { position:absolute; width:1.2vmin; height:1.2vmin; border-radius:50%; }
+
+/* --- Floating Hearts --- */
+.love { position:fixed; bottom:0; left:0; right:0; pointer-events:none; }
+.heart { position:absolute; font-size:clamp(16px,3.4vmin,36px); color:var(--heart); opacity:0;
+  animation:rise 6s ease-in infinite; }
+@keyframes rise { 
+  0%{transform:translateY(0) scale(.8); opacity:0} 
+  10%{opacity:.9} 
+  50%{opacity:.9} 
+  100%{transform:translateY(-70vh) scale(1.2); opacity:0} 
+}
+
+/* --- Interactive Boxes --- */
+.interactive-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 90%;
+  max-width: 360px;
+  margin: 0 auto 20px;
+  padding: 10px;
+}
+
+.interactive-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  padding: 14px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ff9fb2, #ffd6a5);
+  color: #163a4a;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.interactive-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+.interactive-box span {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+/* Responsive tweaks for very small screens */
+@media (max-width: 480px) {
+  .message-card { padding: 1rem; max-width: 95%; font-size: 0.9rem; }
+  .interactive-box { font-size: 0.9rem; padding: 10px; border-radius: 12px; }
+  .interactive-box span { font-size: 1.3rem; }
+  .character { width: 40vmin; }
+  .elephant { width: 120px; }
+  .flower { width: 1vmin !important; }
+  .heart { font-size: clamp(12px, 3vmin, 24px); }
+}
+
+body {
+  margin:0;
+  height:100vh;
+  background:linear-gradient(to bottom,var(--blue1),var(--blue2));
+  font-family:"Poppins",sans-serif;
+  color:var(--text);
+  overflow-y:auto; /* scrolling enable */
+  overflow-x:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+/* --- Interactive Boxes --- */
+.interactive-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;  /* right side place */
+  gap: 10px;
+  width: 90%;
+  max-width: 250px;  /* smaller width */
+  margin: 0 15px 20px auto;  /* right side align */
+  padding: 6px;
+}
+
+.interactive-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  padding: 10px;  /* smaller padding */
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ff9fb2, #ffd6a5);
+  color: #163a4a;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.interactive-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+.interactive-box span {
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .interactive-section {
+    max-width: 180px;
+    gap: 8px;
+  }
+  .interactive-box {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+  .interactive-box span {
+    font-size: 1.1rem;
+  }
+}
+
+
+</style>
+
+<body>
+
+  <!-- Sky Elements -->
+  <div class="sky">
+    <div class="sunshine"></div>
+    <div class="cloud tiny float" style="top:15vh; animation-duration:60s;"></div>
+    <div class="cloud big float" style="top:28vh; animation-duration:90s; animation-delay:-10s;"></div>
+    <div class="cloud tiny float" style="top:35vh; animation-duration:70s; animation-delay:-25s;"></div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="scene">
+    <article class="message-card">
+      <div class="tag">For my Suhani 💖</div>
+
+      <!-- Updated Interactive Boxes -->
+      <section class="interactive-section">
+        <a class="interactive-box" href="gift.html"><span>🎁</span> Gift Box</a>
+        <a class="interactive-box" href="sorry.html"><span>💌</span> Sorry Card</a>
+        <a class="interactive-box" href="memories.html"><span>📸</span> Memories</a>
+        <a class="interactive-box" href="questions.html"><span>❓</span> Questions</a>
+        
+      </section>
+
+      <!-- Chibi Character -->
+      <svg class="character" viewBox="0 0 300 320">
+        <ellipse cx="150" cy="300" rx="70" ry="10" fill="black" opacity=".08"/>
+        <circle cx="150" cy="140" r="70" fill="#ffd6c4"/>
+        <ellipse cx="125" cy="150" rx="12" ry="16" fill="#333"/>
+        <ellipse cx="175" cy="150" rx="12" ry="16" fill="#333"/>
+        <circle cx="121" cy="145" r="3" fill="#fff"/>
+        <circle cx="171" cy="145" r="3" fill="#fff"/>
+        <ellipse cx="105" cy="170" rx="12" ry="6" fill="#ff9fb2" opacity=".7"/>
+        <ellipse cx="195" cy="170" rx="12" ry="6" fill="#ff9fb2" opacity=".7"/>
+        <path d="M135 176 q15 12 30 0" stroke="#b2475b" stroke-width="4" fill="none" stroke-linecap="round"/>
+      </svg>
+
+      <!-- Elephant -->
+      <svg class="elephant" viewBox="0 0 300 150">
+        <circle cx="80" cy="80" r="40" fill="#a3c4dc"/>
+        <circle cx="50" cy="70" r="20" fill="#a3c4dc"/>
+        <circle cx="120" cy="70" r="20" fill="#a3c4dc"/>
+        <circle cx="70" cy="70" r="8" fill="black"/>
+        <circle cx="90" cy="70" r="8" fill="black"/>
+        <ellipse cx="80" cy="95" rx="20" ry="10" fill="#555"/>
+      </svg>
+
+      <!-- Text -->
+      <h1>I’m sorry, my love 💛</h1>
+      <p>Suhani Saroj, jaan ab main tumse kabhi badtamizi nahi karunga.<br>I love you, mera baccha 🐘💕</p>
+    </article>
+  </main>
+
+  <!-- Hills & Flowers -->
+  <div class="ground">
+    <svg class="layer back" viewBox="0 0 1200 300" preserveAspectRatio="none">
+      <path d="M0 200 C 200 120, 400 160, 600 120 C 800 80, 1000 140, 1200 90 V 300 H 0 Z"/>
+    </svg>
+    <svg class="layer mid" viewBox="0 0 1200 300" preserveAspectRatio="none">
+      <path d="M0 210 C 200 150, 400 190, 600 160 C 800 140, 1000 170, 1200 140 V 300 H 0 Z"/>
+    </svg>
+    <svg class="layer front" viewBox="0 0 1200 300" preserveAspectRatio="none">
+      <path d="M0 230 C 200 190, 400 220, 600 210 C 800 200, 1000 230, 1200 210 V 300 H 0 Z"/>
+    </svg>
+    <div class="garden"></div>
+  </div>
+
+  <!-- Floating Hearts -->
+  <div class="love"></div>
+
+  <script>
+  // Floating Hearts
+  const loveBox = document.querySelector(".love");
+  function dropHeart(){
+    const span = document.createElement("span");
+    span.classList.add("heart");
+    span.textContent = "❤";
+    span.style.left = Math.random()*100 + "vw";
+    span.style.bottom = (2 + Math.random()*6) + "vh";
+    span.style.animationDuration = (5 + Math.random()*4) + "s";
+    span.style.animationDelay = (Math.random()*4) + "s";
+    loveBox.appendChild(span);
+    setTimeout(()=> span.remove(), 9000);
+  }
+  for(let i=0;i<20;i++) dropHeart();
+  setInterval(dropHeart, 1200);
+
+  // Flowers
+  const garden = document.querySelector(".garden");
+  const colors = ["var(--petal1)","var(--petal2)","var(--petal3)","var(--petal4)","var(--petal5)"];
+  for(let i=0;i<60;i++){
+    const flower = document.createElement("div");
+    flower.className="flower";
+    flower.style.height = (3 + Math.random()*5) + "vmin";
+
+    const stem = document.createElement("div");
+    stem.className="stem";
+    stem.style.height="100%";
+    flower.appendChild(stem);
+
+    for(let p=0;p<4;p++){
+      const petal = document.createElement("div");
+      petal.className="petal";
+      petal.style.background = colors[Math.floor(Math.random()*colors.length)];
+      petal.style.top = (p*0.4 + 0.2) + "vmin";
+      if(p===1) petal.style.left="-0.8vmin";
+      if(p===2) petal.style.right="-0.8vmin";
+      if(p===0||p===3) petal.style.left="50%";
+      flower.appendChild(petal);
+    }
+    garden.appendChild(flower);
+  }
+  </script>
+</body>
+</html>
+
+
